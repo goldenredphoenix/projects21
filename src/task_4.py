@@ -2,16 +2,18 @@ import json
 import os
 from pathlib import Path
 
-# создаем экземпляр класса для работы с путями 
+
 path_patients = Path("materials/patients")
 
-# получаем ФИО пациента из клавиатуры в формате NAME FAMILIY OTCHESTVO
 name_of_patient: str = input("Enter the full name of the patient separated by space (Ivanov Ivan Ivanovich): ")
 
-# приводим строку к нижнему регистру, убираем пробелы в начале и в конце строки
+
 name_of_patient = name_of_patient.lower().strip()
 parts = name_of_patient.split(" ")
-parts = list(map(lambda x: x.title(), parts))
+
+for i in range(len(parts)):
+    parts[i] = parts[i].title()
+
 patient_name_normalise = "_".join(parts)
 
 folders = os.listdir(path_patients)
@@ -23,10 +25,10 @@ if patient_name_normalise in folders:
             s = f.read()
         print(s)
     else:
-        print("Not fpond card")
+        print("There is no patient card!")
 
 else:
-    print("Пациента нет") 
+    print("There is no such patient!") 
 
 
 
