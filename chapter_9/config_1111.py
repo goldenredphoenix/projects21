@@ -13,4 +13,3 @@ class Configuration:
 
         self.login: str = os.environ["LOGIN"]
         self.base_folder: str = os.environ["BASE_FOLDER"] 
-
